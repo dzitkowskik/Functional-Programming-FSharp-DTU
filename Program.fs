@@ -118,6 +118,14 @@ response for a matching client comprises name, telephone number and themes of in
         let expected = ClientA
         printTestResult "insertToRegister_UnitTest" (result = expected)
 
-    
+    let existsIn_true_UnitTest =
+        let result = existsIn Register ClientA
+        let expected = true
+        printTestResult "existsIn_true_UnitTest" (result = expected)
+
+    let existsIn_false_UnitTest =
+        let result = existsIn Register ClientB
+        let expected = false
+        printTestResult "existsIn_true_UnitTest" (result = expected)
 
     let Response = getResponse Register ClientA
