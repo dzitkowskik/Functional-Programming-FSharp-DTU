@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{B190F335-38C7-449E-B11D-A899A6C8A4BF}</ProjectGuid>
+    <ProjectGuid>{0A14D9A9-3929-45F6-85FE-AD7F88C52796}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DTU_Functional_Programming</RootNamespace>
-    <AssemblyName>DTU_Functional_Programming</AssemblyName>
+    <RootNamespace>Assignment_2</RootNamespace>
+    <AssemblyName>Assignment_2</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -15,9 +15,9 @@
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
+    <Externalconsole>true</Externalconsole>
     <Tailcalls>false</Tailcalls>
     <PlatformTarget>x86</PlatformTarget>
-    <Externalconsole>true</Externalconsole>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugSymbols>false</DebugSymbols>
@@ -37,6 +37,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />

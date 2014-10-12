@@ -1,6 +1,6 @@
 ﻿#light
 
-module Project_1 =
+module Assignment_1 =
 
 (*
 A dating bureau has a register containing name, telephone number, sex, year of birth and themes of interest for each client.
@@ -71,9 +71,9 @@ response for a matching client comprises name, telephone number and themes of in
 
 #if DEBUG
 
-    //////////////////////////////
-    //           TESTS          //
-    //////////////////////////////
+//////////////////////////////
+//           TESTS          //
+//////////////////////////////
 
     let printTestResult testName result =
         let oldColor = System.Console.ForegroundColor
@@ -86,9 +86,7 @@ response for a matching client comprises name, telephone number and themes of in
         System.Console.ForegroundColor <- oldColor
 
 
-    /////////////////////
-    // 1) Preparing data
-    /////////////////////
+// 1) Preparing data
 
     let mutable Register = [
         {
@@ -139,9 +137,7 @@ response for a matching client comprises name, telephone number and themes of in
         }
 
 
-    /////////////////
-    // 2. Unit tests
-    /////////////////
+// 2. Unit tests
 
     let insertToRegister_UnitTest = 
         insertToRegister &Register ClientA
