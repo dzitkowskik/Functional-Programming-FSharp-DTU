@@ -2,15 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assignment_2/Program.fs">
     <Files>
-      <File FileName="Assignment_2/Program.fs" Line="54" Column="54" />
-      <File FileName="Assignment_1/Program.fs" Line="72" Column="72" />
+      <File FileName="Assignment_2/Program.fs" Line="52" Column="52" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <DisabledProjects>
-    <String>Assignment_1.fsproj</String>
-  </DisabledProjects>
 </Properties>

@@ -37,12 +37,15 @@ Do not use printf in the declaration of format.)
 
 // 3)
 
+    // Department -> string * float
     let toInfo dep = (dep.Name, dep.GrossIncome)
 
+    // Department -> (string * float) list
     let rec extractDepartments dep =
         if dep.SubDepartments.IsEmpty then [toInfo dep]
         else toInfo dep :: List.concat (List.map extractDepartments dep.SubDepartments)
 
+    // Department -> (string * float) list
     let rec extractDepartments2 company = 
         let rec loop deps acc =
             match deps with
@@ -52,10 +55,12 @@ Do not use printf in the declaration of format.)
 
 // 4)
 
+    // Department -> float
     let rec getGrossIncomeSum dep = 
         if dep.SubDepartments.IsEmpty then dep.GrossIncome
         else (List.sumBy getGrossIncomeSum dep.SubDepartments) + dep.GrossIncome
 
+    // Department -> float
     let rec getGrossIncomeSum2 dep = 
         let rec loop deps gross =
             match deps with
@@ -65,7 +70,41 @@ Do not use printf in the declaration of format.)
 
 // 5)
 
+    // Department -> (string * float) list
+    let rec sumUpDepartments dep =  
+        let subResults = List.concat (List.map sumUpDepartments dep.SubDepartments)
+        let subDeps = 
+            subResults
+            |> List.filter (fun x -> List.exists (fun y -> fst x = y.Name) dep.SubDepartments)
+        (dep.Name, dep.GrossIncome + List.sumBy (fun x -> snd x) subDeps) :: subResults
+
+    // Department -> (string * float) list
+    let rec sumUpDepartments2 dep = 
+        let rec loop deps acc =
+            match deps with
+            | head :: tail -> loop tail (sumUpDepartments2 head @ acc)
+            | [] -> acc
+        loop dep.SubDepartments [(dep.Name, getGrossIncomeSum2 dep)]
+
 // 6)
+
+    // Department -> string
+    let printOutCompany company = 
+        let tab = "\t"
+        let rec printOut dep ident =
+            let text = ident + dep.Name + "\n"
+            List.foldBack (fun elem acc -> acc + printOut elem (ident+tab)) dep.SubDepartments text
+        printOut company ""
+
+// OTHER)
+
+    // Department -> bool
+    let printOutCompanyToStdOut company = 
+        let tab = "\t"
+        let rec printOut dep ident =
+            printf "%s%s\n" ident dep.Name
+            List.forall (fun x -> printOut x (ident+tab)) dep.SubDepartments
+        printOut company ""
 
 //#if DEBUG
 
@@ -149,5 +188,42 @@ Do not use printf in the declaration of format.)
         let expected = 100.0
         printTestResult "getGrossIncomeSum2_noSubDep_UnitTest" (result = expected)
 
+    let sumUpDepartments_noSubDep_UnitTest =
+        let result = sumUpDepartments Dep5
+        let expected = [(Dep5.Name, Dep5.GrossIncome)]
+        printTestResult "sumUpDepartments_noSubDep_UnitTest" (compareLists result expected)
+
+    let sumUpDepartments_CompanyA_UnitTest =
+        let result = sumUpDepartments CompanyA
+        let expected = [(Dep5.Name, Dep5.GrossIncome);
+                        (Dep4.Name, Dep4.GrossIncome);
+                        (Dep3.Name, Dep3.GrossIncome+Dep5.GrossIncome);
+                        (Dep2.Name, Dep2.GrossIncome+Dep4.GrossIncome);
+                        (Dep1.Name, 2400.0);
+                        (CompanyA.Name, 4900.0)]
+        printTestResult "sumUpDepartments_noSubDep_UnitTest" (compareLists result expected)
+
+    let sumUpDepartments2_noSubDep_UnitTest =
+        let result = sumUpDepartments2 Dep5
+        let expected = [(Dep5.Name, Dep5.GrossIncome)]
+        printTestResult "sumUpDepartments2_noSubDep_UnitTest" (compareLists result expected)
+
+    let sumUpDepartments2_CompanyA_UnitTest =
+        let result = sumUpDepartments2 CompanyA
+        let expected = [(Dep5.Name, Dep5.GrossIncome);
+                        (Dep4.Name, Dep4.GrossIncome);
+                        (Dep3.Name, Dep3.GrossIncome+Dep5.GrossIncome);
+                        (Dep2.Name, Dep2.GrossIncome+Dep4.GrossIncome);
+                        (Dep1.Name, 2400.0);
+                        (CompanyA.Name, 4900.0)]
+        printTestResult "sumUpDepartments2_noSubDep_UnitTest" (compareLists result expected)
+
+
+    let printOutCompany_UnitTest =
+        let result = printOutCompany CompanyA
+        let expected = "Asseco Sp.Z.O.O\n\tFirst dep\n\t\tThird dep\n\t\t\tFifth dep\n\t\tSecond dep\n\t\t\tFourth dep\n"
+        printTestResult "printOutCompany_UnitTest" (result = expected)
+    
+    printOutCompanyToStdOut CompanyA |> ignore
 
 //#endif
