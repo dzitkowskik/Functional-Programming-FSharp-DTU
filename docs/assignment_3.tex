@@ -1,0 +1,37 @@
+
+
+\title{
+02157 Functional programming \\
+Mandatory assignment 3 \\
+Solver for Propositional Logic
+}
+\author{
+        Karol Dzitkowski - s142246
+}
+\date{\today}
+
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\maketitle
+
+\section{Knight-Knave puzzle}
+\subsection{Formulation}
+Three of the island's inhabitants – A, B, and C – were talking together. 
+A said, ,,All of us are knaves.'' Then B remarked, ,,Exactly one of us is a knight.'' 
+What are A, B, and C?
+\subsection{Solution}
+Let p, q, r be the statements that A is a knight, B is a knight and C is a knight respectively
+Then $\neg p$ represents the proposition that A is a knave and $\neg q$ that B is a knave, and the same for C: $\neg r$.
+We have two sentences:
+\begin{enumerate}
+\item $ s_1 = p \iff (\neg p \land \neg q  \land \neg r) $
+\item $ s_2 = q \iff (p  \land \neg q  \land \neg r) \vee (\neg p  \land q  \land \neg r) \vee (\neg p  \land \neg q  \land r) $
+\end{enumerate}
+We can present a solution for that problem as: $ s_1 \land s_2$ which (after transformations) is equal to: $ q  \land \neg p \land \neg r $
+Which I computed using ,,toDNFsets'' function I wrote and is included in source code. So A and C are knaves and B is a knight.
+Normally this puzzle is easy because someone saying sentence 1 must be a knave, and then B must be a knight because A is not, and
+if it was C than B have to be also a knight which is contradictory to sentence 2. 
+\end{document}
+  

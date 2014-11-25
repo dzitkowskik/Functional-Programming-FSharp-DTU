@@ -9,6 +9,8 @@ Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "SimpleInterpreter", "Simple
 EndProject
 Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Assignment_3", "Assignment_3\Assignment_3.fsproj", "{93CC236B-A2E3-44A7-8BBE-20721E9EA983}"
 EndProject
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Assignment_4", "Assignment_4\Assignment_4.fsproj", "{A3E52864-5F9F-447E-ADAA-AE58660229FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -27,12 +29,16 @@ Global
 		{93CC236B-A2E3-44A7-8BBE-20721E9EA983}.Debug|x86.Build.0 = Debug|x86
 		{93CC236B-A2E3-44A7-8BBE-20721E9EA983}.Release|x86.ActiveCfg = Release|x86
 		{93CC236B-A2E3-44A7-8BBE-20721E9EA983}.Release|x86.Build.0 = Release|x86
+		{A3E52864-5F9F-447E-ADAA-AE58660229FC}.Debug|x86.ActiveCfg = Debug|x86
+		{A3E52864-5F9F-447E-ADAA-AE58660229FC}.Debug|x86.Build.0 = Debug|x86
+		{A3E52864-5F9F-447E-ADAA-AE58660229FC}.Release|x86.ActiveCfg = Release|x86
+		{A3E52864-5F9F-447E-ADAA-AE58660229FC}.Release|x86.Build.0 = Release|x86
 		{B190F335-38C7-449E-B11D-A899A6C8A4BF}.Debug|x86.ActiveCfg = Debug|x86
 		{B190F335-38C7-449E-B11D-A899A6C8A4BF}.Debug|x86.Build.0 = Debug|x86
 		{B190F335-38C7-449E-B11D-A899A6C8A4BF}.Release|x86.ActiveCfg = Release|x86
 		{B190F335-38C7-449E-B11D-A899A6C8A4BF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assignment_3\Assignment_3.fsproj
+		StartupItem = Assignment_4\Assignment_4.fsproj
 	EndGlobalSection
 EndGlobal
